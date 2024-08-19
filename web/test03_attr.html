@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test03_attr.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#name").attr("value","홍길동")
+
+            $("#btn1").click0(function () {
+                const name = $("#name").attr("value");
+                alert('당신의 이름은 ' + name + '이군요');
+            });
+            $("#btn2").click(function () {
+                $("#img1").attr("src", "images/mole2.gif")
+            });
+        });
+    </script>
+</head>
+<body>
+    이름 <input type="text" id="name">
+    <input type="button" value="확인" id="btn1"><br>
+    <img src="images/mole.png" id="img1"><br>
+    <button id="btn2" >이미지 변경</button>
+</body>
+</html>
