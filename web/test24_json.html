@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test24_json.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        // $(function () {
+        //     $("#btn1").click(function () {
+        //         $.ajax({
+        //             url: 'server/meminfo.jsp',
+        //             dataType: 'json',
+        //             success: function (data) {
+        //                 const html = "아이디 : " + data.id + "<br>" +
+        //                     "이름 : " + data.name + "<br>" +
+        //                     "나이 : " + data.age;
+        //                 $("#result").html(html);
+        //             },
+        //         })
+        //     });
+        // });
+
+        //getJSON
+        $(function () {
+            $("#btn1").click(function () {
+                $.getJSON('server/meminfo.jsp', function (data) {
+                    const html = "아이디 : " + data.id + "<br>" +
+                        "이름 : " + data.name + "<br>" +
+                        "나이 : " + data.age;
+                    $("#result").html(html);
+                });
+            });
+        });
+
+        // $(function () {
+        //     $("#btn2").click(function () {
+        //         $.getJSON('server/memlist.jsp', function (data) {
+        //             for (let i = 0; i < data.length; i++) {
+        //                 const html = "아이디 : " + data[i].id + "<br>" +
+        //                     "비밀번호 : " + data[i].pwd + "<br>" +
+        //                     "나이 : " + data[i].age + "<br><br>";
+        //                 $("#list").append(html) ;
+        //             }
+        //
+        //         });
+        //     });
+        // });
+        $(function () {
+            $("#btn2").click(function () {
+                $.getJSON('server/memlist.jsp', function (data) {
+                    $.each(data, (function (index, item) {
+                        const html = "아이디 : " + item.id + "<br>" +
+                            "비밀번호 : " + item.pwd + "<br>" +
+                            "나이 : " + item.age + "<br><br>";
+                        $("#list").append(html);
+                    }));
+                });
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<button id="btn1">회원정보</button>
+<div id="result"></div>
+
+<button id="btn2">회원리스트</button>
+<div id="list"></div>
+</body>
+</html>

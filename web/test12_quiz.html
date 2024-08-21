@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test12_quiz.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sel").click(function() {
+                var v = $(this).val();
+                $("#img1").prop("src", "images/" + v);
+            });		
+            $("#btn").click(function() {
+                var src=$("#img1").prop("src");
+                $("#list").append("<img src='"+src+"'>");
+            });
+            $("#list").on("dblclick","img",function() {
+                $(this).remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <pre>
+        - select를 클릭하면 해당 이미지가 div#list에 추가된다.
+        - 추가된 이미지가 #img1에 보인다.
+        - div#list에 추가된 이미지를 더블클릭(dblclick)하면 이미지가 제거된다.
+        공유폴더/퀴즈/0820폴더에 코드 올려보세요
+
+    </pre>
+    <select id="sel" size="5" style="width:150px">
+        <option value="1.png">소년이미지</option>
+        <option value="2.png">커피이미지</option>
+        <option value="3.png">강아지이미지</option>
+    </select><br>
+    <img src="images/1.png" id="img1"><br>
+    <input type="button" value="담기" id="btn">
+    <div id="list"></div>
+</body>
+</html>

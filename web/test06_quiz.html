@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test06_quiz.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <input type="button" value="이미지크게하기" id="btn1"><br>
+    <!-- 자바스크립트로 이미지의 크기를 100px,100px로 설정하고
+    버튼을 누를때마다 이미지가 2배 커지도록 작성해 보세요. -->
+    <img src="images/1.png" id="img1">
+    <script>
+        $("#img1").css({
+            width:100,
+            height:100
+        });
+        $("#btn1").click(function(){
+            //const w=parseInt($("#img1").css("width")); //100px  --> 100
+            //const w=Number($("#img1").css("width")); // 100px --> NaN
+            const w=$("#img1").width()*2;
+            const h=$("#img1").height()*2;
+            $("#img1").css({
+                width:w,
+                height:h
+            });
+        });
+    </script>
+</body>
+</html>

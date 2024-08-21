@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test17_quiz.html</title>
+    <style>
+
+        *{margin:0;padding: 0}
+        #parent{width: 700px; height: 200px; background-color: orange;position:
+                relative; top: 30px; left: 200px; overflow: hidden}
+        #imgSlide{width: 1400px; height: 200px; position: absolute; left: 0px;}
+        #imgSlide ul li {float:left; list-style: none;}
+        #imgSlide ul li img{width:136px; margin:2px; height: 196px}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            let direction = -1
+            setInterval(function (){
+                let moveLeft = parseInt($("#imgSlide").css("left"));
+                let move = moveLeft + (direction * 140);
+                $("#imgSlide").animate({
+                    left: move
+                }, 300, function () {
+                    if (move <= -700 || move == 0) {
+                        direction *= -1;
+                    }
+                });
+            },1000);
+        });
+    </script>
+</head>
+<body>
+<div id="posterBox">
+    <div id="parent">
+        <div id="imgSlide">
+            <ul>
+                <li><img src="images/mole.png"></li>
+                <li><img src="images/mole2.gif"></li>
+                <li><img src="images/mole3.gif"></li>
+                <li><img src="images/004.jpg"></li>
+                <li><img src="images/005.jpg"></li>
+                <li><img src="images/006.jpg"></li>
+                <li><img src="images/007.jpg"></li>
+                <li><img src="images/cloud.JPG"></li>
+                <li><img src="images/back.jpg"></li>
+                <li><img src="images/water.gif"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

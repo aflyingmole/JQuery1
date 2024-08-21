@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test07_checked.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#desc").prop("disabled",true);//text 비활성화 하기
+            $("#chk").click(function(){
+                let checked=$(this).prop("checked");
+                if(checked){
+                    $("#desc").prop("disabled",false); //활성화하기
+                    $("#desc").focus();//포커스주기
+                }else{
+                    $("#desc").prop("disabled",true);//비활성화 하기
+                }
+            });
+            $("#check").click(function(){
+                if($(this).prop("checked")){
+                    var name1=$("#name1").val();
+                    var addr1=$("#addr1").val();
+                    $("#name2").val(name1);
+                    $("#addr2").val(addr1);
+                }else{
+                    $("#name2").val("");
+                    $("#addr2").val("");
+                    $("#name2").focus();
+                }
+		    });
+        });
+
+    </script>
+</head>
+<body>
+    기타사항 <input type="checkbox" id="chk" >
+    <input type="text" id="desc" size="50"><br><br><br>
+
+    회원이름<input type="text"  id="name1"><br/>
+    회원주소<input type="text"  id="addr1"><br/>
+    <input type="checkbox" value="위와동일" name="check" id="check">위와동일<br/>
+    받는사람<input type="text" id="name2"><br/>
+    받는주소<input type="text" id="addr2"><br/>
+</body>
+</html>

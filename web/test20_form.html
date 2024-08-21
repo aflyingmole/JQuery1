@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test20_form.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        // 아이디가 5~8 사이인지 검사 취미는 하나이상 선택되어야 서버로 전송 비밀번호 일치검사
+        $(function () {
+            $("form").submit(function (e) {
+                const id = $("input[name='id']").val().length;
+                if (id > 8 || id < 5) {
+                    $("input[name='id']").next().text("5~8 사이로 입력하세요")
+                    $("input[name='id']").focus();
+                    e.preventDefault();
+                }
+                const pwd = $("input[name='pwd']").val();
+                if (pwd == "") {
+                    $("input[name='pwd']").next().text("비밀번호를 입력하세요")
+                    $("input[name='pwd']").focus();
+                    e.preventDefault();
+                }
+                const pwd1 = $("input[name='pwd1']").val();
+                if (pwd1 != pwd) {
+                    $("input[name='pwd1']").next().text("비밀번호가 일치하지 않습니다")
+                    $("input[name='pwd1']").focus();
+                    e.preventDefault();
+                }
+                // let cnt = 0;
+                // $("input[name='hobby']").each(function () {
+                //     if ($(this).prop("checked")) {
+                //         cnt++
+                //     }
+                // });
+                let cnt = $("input:checked").length;
+                if (cnt == 0) {
+                    $("input[name='hobby']").next().text("❤️❤️❤️취미는 하나이상 선택되어야 합니다")
+                    $("input[name='hobby']").focus();
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>회원가입</h1>
+<form action="join.jsp">
+    아이디(*) <input type="text" name="id" class="required"><span></span><br>
+    비밀번호(*) <input type="password" name="pwd" class="required"><span></span><br>
+    비밀번호확인(*) <input type="password" name="pwd1" class="required"><span></span><br>
+    취미<br>
+    <input type="checkbox" value="여행" name="hobby" checked="checked">여행
+    <input type="checkbox" value="영화" name="hobby">영화
+    <input type="checkbox" value="게임" name="hobby">게임<span></span><br>
+    이메일 <input type="text" name="email"><br>
+    <input type="submit" value="가입">
+</form>
+</body>
+</html>

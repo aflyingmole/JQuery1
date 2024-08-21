@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test16_slide.html</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        #parent{width:700px;height: 200px;background-color: orange;
+            position: relative;left:200px;top:30px;overflow: hidden;}
+        #child{width:980px;height: 200px;position: absolute;left:0px;}
+        #child ul li img{width:136px;height: 196px;margin: 2px;}
+        #child ul li{float: left;list-style: none;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function () {
+                setInterval(function (){
+                    let moveLeft = parseInt($("#child").css("left"))-140;
+                    $("#child").animate({
+                        left: moveLeft
+                    }, 500, function () {
+                        if (moveLeft <= -980) {
+                            $(this).css("left", 700);
+                        }
+                    });
+                },2000);
+            });
+    </script>
+</head>
+<body>
+    <div id="parent">
+        <div id="child">
+            <ul>
+                <li><img src="images/mole.png"></li>
+                <li><img src="images/mole2.gif"></li>
+                <li><img src="images/mole3.gif"></li>
+                <li><img src="images/004.jpg"></li>
+                <li><img src="images/005.jpg"></li>
+                <li><img src="images/006.jpg"></li>
+                <li><img src="images/007.jpg"></li>
+                <li><img src="images/cloud.JPG"></li>
+                <li><img src="images/back.jpg"></li>
+                <li><img src="images/water.gif"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

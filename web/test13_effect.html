@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test13_effect.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            const imgs=['images/2.png','images/3.png','images/1.png'];
+            let index=0;
+            $("#btn1").click(function(){
+                $("#box1").slideUp(500,function(){
+                   // alert('숨김완료!');
+                   $("#img1").prop('src',imgs[index++ % imgs.length]);
+                });
+            });
+            $("#btn2").click(function(){
+                $("#box1").slideDown(500);
+            });
+            $("#img2").css({
+                position:"relative",
+                left:0,
+                top:0
+            });
+            $("#btn3").click(function(){
+                //$("#img2").css("margin-left","1000px");
+                // $("#img2").animate({
+                //     "margin-left":1000,
+                //     marginTop:500
+                // },500); //margin-left 속성값을 0.5초동안 1000px로 변경함
+                $("#img2").animate({
+                    left:1000,
+                    top:100
+                },500); 
+            });
+        });
+       
+    </script>
+</head>
+<body>
+    <input type="button" value="move" id="btn3"><br>
+    <img src="images/2.png" id="img2" >
+    <br>
+
+    <input type="button" value="숨기기" id="btn1">
+    <input type="button" value="보이기" id="btn2">
+    <div id="box1" style="width:300px;height: 200px;background-color: pink">
+        <img src="images/1.png" id="img1" >
+    </div>
+</body>
+</html>

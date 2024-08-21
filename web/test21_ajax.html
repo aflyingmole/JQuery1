@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test21_ajax.html</title>
+    <style>
+        .mybook {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #aaa;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $.ajax({
+                    url: 'books.xml',
+                    dataType: 'xml', //응답콘텐츠타입(xml,json,text,html)
+                    success: function (data) { //응답이 성공적으로 오며 function 수행
+                        // alert(data);
+                        $(data).find("book").each(function () {
+                            const title = $(this).find("title").text();
+                            const price = $(this).find("price").text();
+                            const html = "<div> " +
+                                        "<h2>도서명 : " + title + "</h2>" +
+                                        "가격 : " + price +
+                                        "</div>";
+                            // $("#bookList").append(html)
+                            $(html).appendTo("#bookList").addClass("mybook");
+                        });
+                    },
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="도서목록" id="btn1">
+<div id="bookList"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test18_form.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $(".required").focusin(function () {
+                $(this).next().text("필수입력사항입니다.");
+            });
+            $(".required").focusout(function () {
+                $(this).next().text("")
+            });
+            $("form").submit(function () {
+                const id = $("input[name='id']").val();
+                if (id == "") {
+                    $("input[name='id']").focus();
+                    $("input[name='id']").next().text("아이디를 입력하세요")
+                    return false;
+                }
+                const pwd = $("input[name='pwd']").val();
+                if (pwd == "") {
+                    $("input[name='pwd']").focus();
+                    $("input[name='pwd']").next().text("비밀번호를 입력하세요")
+                    return false;
+                }
+                const pwd1 = $("input[name='pwd1']").val();
+                if (pwd1 != pwd) {
+                    $("input[name='pwd1']").focus();
+                    $("input[name='pwd1']").next().text("비밀번호가 일치하지 않습니다")
+                    return false;
+                }
+                return true;
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+<h1>회원가입</h1>
+<form action="join.jsp">
+    아이디(*) <input type="text" name="id" class="required"><span></span><br>
+    비밀번호(*) <input type="password" name="pwd" class="required"><span></span><br>
+    비밀번호확인(*) <input type="password" name="pwd1" class="required"><span></span><br>
+    이메일 <input type="text" name="email"><br>
+    <input type="submit" value="가입">
+</form>
+</body>
+</html>

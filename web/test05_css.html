@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test05_css.html</title>
+    <style>
+        .mystyle{width:300px;height: 200px;background-color: green;
+            border:2px solid yellow}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="box">
+        <h1>hello!</h1>
+    </div>
+    <button id="btn1">클래스적용</button>
+    <button id="btn2">클래스해제</button>
+    <script>
+        $("#btn1").click(function(){
+            $("#box").addClass("mystyle"); //클래스 적용하기
+            const w=$("#box").css("width");
+            const h=$("#box").css("height");
+            console.log(w,h);
+        });
+        $("#btn2").click(function(){
+            $("#box").removeClass("mystyle"); //적용된 클래스 없애기
+            const w=$("#box").css("width");
+            const h=$("#box").css("height");
+            console.log(w,h);
+        });
+        // $("#box").css("background-color",'yellow');
+        // $("#box").css("width","400px");
+        // $("#box").css("height","200px");
+        // $("#box").css({
+        //     width:400,
+        //     height:"200px",
+        //    // "background-color":"red"
+        //     backgroundColor:"blue"
+        // });
+        
+    </script>
+</body>
+</html>

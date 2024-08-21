@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test22_quiz.html</title>
+    <style>
+        .myEmp {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #aaa;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $.ajax({
+                    url: 'quiz.xml',
+                    dataType: 'xml',
+                    success: function (data) {
+                        $(data).find("employee").each(function () {
+                            const firstName = $(this).find("firstName").text();
+                            const lastName = $(this).find("lastName").text();
+                            const id = $(this).find("id").text();
+                            const html = "<div>" +
+                                        "사원이름 : " + firstName + " " + lastName + "<br>" +
+                                        "id : " + id +
+                                        "</div>"
+                            $(html).appendTo("#empList").addClass("myEmp")
+                        });
+                    },
+                })
+                $("#empList").on('mouseover', "div", function () {
+                    $(this).css("background-color", "magenta");
+                });
+                $("#empList").on('mouseout', "div", function () {
+                    $(this).css("background-color", "white");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="사원목록" id="btn1">
+<div id="empList"></div>
+</body>
+</html>

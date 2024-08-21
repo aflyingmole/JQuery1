@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test08_each.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            const pp= $("#pp").html(); //innerHTML 속성과 같음
+            console.log(pp);
+            const pp1= $("#pp").text(); //innerText 속성과 같음
+            console.log(pp1);
+            $("#pp").html("<img src='images/1.png'>");
+            $("p").css("background-color","yellow");
+            const a=$("p").html();
+            //alert(a);
+            $("p").each(function(index){ //p요소의 갯수만큼 루프를 돌면서 function이 수행됨
+                const html=$(this).html();
+                console.log("p["+ index +"]",html);
+            });
+            var num=4;
+            $("#btn1").click(function(){
+                $("#imgbox img").each(function(){
+                    $(this).prop("src","images/" + num++ +".png");
+                    if(num>=20) num=1;
+            });
+	    });
+    });
+    </script>
+</head>
+<body>
+    <div id="imgbox">
+        <img src="images/1.png">
+        <img src="images/2.png">
+        <img src="images/3.png">
+    </div>
+    <!-- 다음 이미지버튼을 클릭하면 #imgbox img의 이미지가 4,5,6.png가 보이도록 해보세요. -->
+    <input type="button" value="다음이미지" id="btn1">
+
+
+    <div id="pp"><span style='color:red'>아리랑</span></div>
+    <p>아리랑 아리랑 아라리요~</p>
+    <p>아리랑 고개로 넘어간다..</p>
+    <p>나를 버리고 가시는 님은...</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test11_event.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <input type="button" value="버튼1" id="btn1">
+    <div id="imgbox"></div>
+
+    <!-- 버튼2을 클릭하면 버튼1,버튼2,.. 버튼을 생성하고
+    버튼을 클릭하면 버튼1을 클릭했습니다. 라고 alert으로 출력되도록 해보세요
+    -->
+    <input type="button" value="버튼2" id="btn2">
+    <div id="btnbox"></div>
+    <input type="button" value="버튼3" id="btn3">
+    <script>
+        //이벤트핸들러에 파라미터 전달하기
+        $("#btn3").on('click',{"id":"hello","name":"홍길동"},function(e){
+            let id=e.data.id;//파라미터값은 e.data.xxx 라는 속성으로 꺼내온다.
+            let name=e.data.name;
+            alert(id +"," + name);
+        });
+
+
+        let n=1;
+        $("#btn2").click(function(){
+            $("#btnbox").append('<input type="button" value="button'+ n++ +'">');
+        });
+        $("#btnbox").on("click","input[type='button']",function(){
+            alert($(this).val() +"을 클릭했군요!");
+        });
+
+        //버튼을 클릭하면 img를 생성해서 imgbox에 추가해 보세요.
+        let num=1;
+        $("#btn1").click(function(){
+            $("#imgbox").append("<img src='images/" + num++ +".png'>");
+            if(num>=20) num=1;
+        });
+        //$("부모요소").on('이벤트명','자식셀렉터','이벤트핸들러'); ->동적으로
+        //추가된 자식요소들에게 이벤트핸들러가 적용된다.
+        $("#imgbox").on('click','img',function(){
+            alert('이미지클릭!!!! ' + $(this).prop('src'));
+        });
+        $("#imgbox").on('mouseover','img',function(){
+            $(this).css('border','2px solid green');
+        });
+        $("#imgbox").on('mouseout','img',function(){
+            $(this).css('border','none');
+        });
+    </script>
+</body>
+</html>

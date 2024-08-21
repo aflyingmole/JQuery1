@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+    <book>
+        <title>jQuery완전정복</title>
+        <price>20000</price>
+    </book>
+    <book>
+        <title>HTML/CSS</title>
+        <price>10000</price>
+    </book>
+    <book>
+        <title>JAVA완전정복</title>
+        <price>25000</price>
+    </book>
+</books>
