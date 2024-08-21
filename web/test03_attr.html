@@ -2,29 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test03_attr.html</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous">
-    </script>
-    <script>
-        $(document).ready(function () {
-            $("#name").attr("value","홍길동")
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script> 
+        $(document).ready(function(){
+        // $("셀렉터").attr("속성명","설정값");  //속성값 설정하기
+        $("#name").attr("value","홍길동");
 
-            $("#btn1").click0(function () {
-                const name = $("#name").attr("value");
-                alert('당신의 이름은 ' + name + '이군요');
-            });
-            $("#btn2").click(function () {
-                $("#img1").attr("src", "images/mole2.gif")
-            });
+        $("#btn1").click(function(){
+           //$("셀렉터").attr("속성명"); // 속성에 설정된 값 꺼내오기
+           const name= $("#name").attr("value");
+           alert("당신의 이름은 " + name +"이군요!");
         });
+        $("#btn2").click(function(){
+            $("#img1").attr("src","images/2.png");
+            console.log("src",$("#img1").attr("src"));
+        });
+      });   
+
     </script>
 </head>
 <body>
     이름 <input type="text" id="name">
-    <input type="button" value="확인" id="btn1"><br>
-    <img src="images/mole.png" id="img1"><br>
-    <button id="btn2" >이미지 변경</button>
+    <input type="button" value="확인"  id="btn1"><br>
+    <img src="images/1.png" id="img1"><br>
+    <button id="btn2" >이미지변경</button> 
 </body>
 </html>

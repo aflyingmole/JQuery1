@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous">
-    </script>
-    <script>
-        // window.onload = function () {
-        //     const btn1 = document.getElementById("btn1");
-        //     btn1.onclick = function () {
-        //         alert("반갑습니다..");
-        //     };
-        // };
-
-        $(document).ready(function () {
-            $("#btn1").click(function () {
-                alert('반갑습니다')
-            });
-            $("#btn2").click(function () {
-                // $("#box1").hide(500);
-                $("#box1").fadeOut(500);
-
-            });
-            $("#btn3").click(function () {
-                // $("#box1").show(500);
-                $("#box1").fadeIn(500);
-            });
-            $("#btn4").click(function () {
-                $("#box1").slideToggle();
-            });
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+/*
+	window.onload=function(){
+	 	const btn1=document.getElementById("btn1");
+	    btn1.onclick=function(){
+	        alert('반갑습니다..');
+	    }
+	}
+*/
+    $(document).ready(function(){
+        $("#btn1").click(function(){
+            alert('반갑습니다.');
         });
-    </script>
+        $("#btn2").click(function(){
+            //$("#box1").hide(500);
+         //   $("#box1").slideUp(500);
+            $("#box1").fadeOut(500);
+        });
+        //btn3을 클릭하면div가 보이도록 해보세요
+        $("#btn3").click(function(){
+           // $("#box1").show(500);
+          // $("#box1").slideDown(500);
+          $("#box1").fadeIn(500);
+        });
+
+        $("#btn4").click(function(){
+            $("#box1").slideToggle();
+        });
+    });
+	
+   
+</script>
 
 </head>
-<body>
-<button id="btn1">button1</button>
-<button id="btn2">hide</button>
-<button id="btn3">show</button>
-<button id="btn4">toggle</button>
-<div id="box1" style="width: 400px;height: 200px;background-color: bisque">test</div>
+<body >
+    <button id="btn1">button1</button>
+    <button id="btn2">hide</button>
+    <button id="btn3">show</button>
+    <button id="btn4">toggle</button>
+    <div id="box1" style="width:400px;height: 200px;background-color: bisque">test</div>
 </body>
 </html>
