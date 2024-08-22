@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test32_drag.html</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #slide ul li img {
+            width: 185px;
+            height: 240px;
+        }
+
+        #slide ul li {
+            list-style: none;
+            float: left;
+        }
+
+        #slidebox {
+            width: 925px;
+            height: 240px;
+            position: relative;
+            left: 200px;
+            top: 50px;
+            overflow: hidden;
+            background-color: gray;
+        }
+
+        #slide {
+            width: 1850px;
+            height: 240px;
+            position: absolute;
+            left: 0px;
+        }
+
+        .btnbox {
+            position: relative;
+            left: 500px;
+            top: 100px
+        }
+    </style>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <script>
+        /*$(function () {
+            $("#btnNext").click(function () {
+                let moveLeft = parseInt($("#slide").css("left")) -185;
+                $("#slide").animate({
+                    left: moveLeft
+                }, 500);
+            });
+            $("#btnPrev").click(function () {
+                let moveRight = parseInt($("#slide").css("left")) +185;
+                $("#slide").animate({
+                    left: moveRight
+                }, 500);
+            });
+
+        })*/
+
+    </script>
+
+</head>
+<body>
+<div id="slidebox">
+    <div id="slide">
+        <ul>
+            <li><img src="images/slide1.png"></li>
+            <li><img src="images/slide2.png"></li>
+            <li><img src="images/slide3.png"></li>
+            <li><img src="images/slide4.png"></li>
+            <li><img src="images/slide5.png"></li>
+            <li><img src="images/slide6.png"></li>
+            <li><img src="images/slide7.png"></li>
+            <li><img src="images/slide8.png"></li>
+            <li><img src="images/slide9.png"></li>
+            <li><img src="images/slide10.png"></li>
+        </ul>
+    </div>
+</div>
+<div class="btnbox">
+    <a href="#" id="btnPrev">이전이미지</a>
+    <a href="#" id="btnNext">다음이미지</a>
+</div>
+<script>
+    $("a").button();
+    $("#btnNext").click(function (e) {
+        e.preventDefault();
+        let left = $("#slide").position().left;
+        if(left <= -925) return;
+        left -= 185;
+        $("#slide").animate({"left" : left});
+    });
+    $("#btnPrev").click(function (e) {
+        e.preventDefault();
+        let left = $("#slide").position().left;
+        if(left == 0) return;
+        left += 185;
+        $("#slide").animate({"left" : left});
+    });
+    $("#slide").draggable({
+        axis : "x",
+        containment:[-725, 0, 200, 0]
+    });
+</script>
+</body>
+</html>

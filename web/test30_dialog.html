@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test30_dialog.html</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        body {
+            font-size: 0.8em;
+        }
+        h1 {
+            text-align: center;
+        }
+        #list {
+            font-size: 100px;
+        }
+        input[type='text'],labe{margin-bottom: 12px;padding: 0.4em; width: 95%;}
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div id="dlg" title="my dialog">
+        <p>
+            한국은행 총재는 어쩌고
+        </p>
+    </div>
+
+<h1 id="open_dlg">일정생성</h1>
+<hr>
+<div id="list"></div>
+    <div id="dlg1" title="일정">
+        <h1>일정정보입력</h1>
+        <labe for="ename">일정이름</labe>
+        <input type="text" id="ename">
+        <labe for="edate">일정날짜</labe>
+        <input type="text" id="edate">
+    </div>
+    <script>
+        $(function () {
+            $("#edate").datepicker({
+                dateFormat: "yy-mm-dd" ,
+                dayNamesMin : ["일", "월", "화", "수", "목", "금", "토"],
+                monthNames : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                yearSuffix : "년",
+                showMonthAfterYear : true
+            });
+            $("#dlg").dialog();
+            $("#dlg1").dialog({
+                autoOpen:false,
+                buttons:{
+                    저장 : function () {
+                        const data = "일정이름 : " + $("#ename").val() + " " + "<br>" +
+                                    "일정날짜 : " + $("#edate").val() +"<br>"
+                        $("#list").html(data)
+                    },
+                    닫기: function () {
+                        $("#dlg1").dialog('close'); //dialog close
+                    },
+                }
+            });
+
+        });
+
+        $("#open_dlg").click(function () {
+            $("#dlg1").dialog('open');
+        });
+    </script>
+</body>
+</html>

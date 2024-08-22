@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test32_drag.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #slide ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            width: 10000px; /* Total width of all images combined */
+            transition: transform 0.5s ease; /* Smooth transition for sliding */
+        }
+
+        #slide ul li {
+            width: 185px; /* Width of each image */
+            height: 240px;
+        }
+
+        #slide ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #slidebox {
+            width: 925px; /* Width of the visible slide area */
+            height: 240px;
+            overflow: hidden;
+            margin: 50px auto;
+            position: relative;
+            background-color: gray;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            const slideList = $("#slide ul");
+            const slideWidth = 185;
+            const totalSlides = 10;
+            const slideDistance = slideWidth * totalSlides;
+            const slideInterval = 2000; // 2 seconds interval
+
+            // Duplicate slides for seamless looping
+            slideList.append(slideList.html());
+
+            function moveSlide() {
+                const left = parseInt(slideList.css("transform").split(',')[4]) || 0;
+
+                if (Math.abs(left) >= slideDistance) {
+                    slideList.css("transform", "translateX(0)");
+                }
+
+                slideList.animate({
+                    transform: `translateX(-=${slideWidth}px)`
+                }, 500, function() {
+                    // Recursive call to move slides
+                    setTimeout(moveSlide, slideInterval);
+                });
+            }
+
+            // Start the sliding effect
+            moveSlide();
+        });
+    </script>
+</head>
+<body>
+<div id="slidebox">
+    <div id="slide">
+        <ul>
+            <li><img src="images/slide1.png" alt="Slide 1"></li>
+            <li><img src="images/slide2.png" alt="Slide 2"></li>
+            <li><img src="images/slide3.png" alt="Slide 3"></li>
+            <li><img src="images/slide4.png" alt="Slide 4"></li>
+            <li><img src="images/slide5.png" alt="Slide 5"></li>
+            <li><img src="images/slide6.png" alt="Slide 6"></li>
+            <li><img src="images/slide7.png" alt="Slide 7"></li>
+            <li><img src="images/slide8.png" alt="Slide 8"></li>
+            <li><img src="images/slide9.png" alt="Slide 9"></li>
+            <li><img src="images/slide10.png" alt="Slide 10"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

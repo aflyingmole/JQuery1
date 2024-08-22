@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test29_datepicker.html</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#date1").datepicker({
+                dateFormat: "yy-mm-dd" ,
+                dayNamesMin : ["일", "월", "화", "수", "목", "금", "토"],
+                monthNames : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                yearSuffix : "년",
+                showMonthAfterYear : true
+            });
+            $("#calendar").datepicker({
+                dateFormat: "yy-mm-dd",
+                onSelect: function (d) {
+                    alert(d);
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+날짜선택 <input type="text" id="date1">
+<div id="calendar"></div>
+</body>
+</html>

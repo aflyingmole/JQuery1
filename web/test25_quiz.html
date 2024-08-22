@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test25_quiz.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function (e) {
+                e.preventDefault();
+                const getEmail = $("#email").val();
+                const getpwd = $("#pwd").val();
+                $.ajax({
+                    url: 'server/findid.jsp',
+                    type: 'GET',
+                    data: { email: getEmail, pwd: getpwd },
+                    success : function (data) {
+                        // const exist = $(data).find("exist").text();
+                        const html = data.userid;
+                        $("#result").html(html);
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+<!--이메일과 비밀번호를 입력받아 해당 아이디 조회하기 (json사용)
+공유폴더 -> 퀴즈 -> 0821 업로드-->
+<h1>아이디 찾기</h1>
+<form method="post" action="server/findid.jsp">
+    이메일 <input type="text" id="email"><br>
+    비밀번호 <input type="password" id="pwd"><br>
+    <input type="submit" value="아이디찾기" id="btn1">
+</form>
+<div id="result"></div>
+</body>
+</html>

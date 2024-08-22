@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test26_load.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            // 서버에서 영화 목록을 로드하여 movieList div에 삽입
+            $("#movieList").load('server/movielist.jsp');
+
+            // 각 링크를 클릭했을 때 해당하는 JSP 페이지를 로드
+            $("a").click( function (e) {
+                e.preventDefault();
+                var url = $(this).prop("href");  // 클릭된 링크의 href 값을 가져옴
+                $("#movieinfo").load(url);       // movieinfo div에 해당 URL을 로드
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>우리우리 영화관</h1>
+<div id="movieList"></div>
+
+<a href="server/movie1.jsp">최근 상영작</a> | <a href="server/movie2.jsp">상영 예정작</a>
+<div id="movieinfo"></div>
+</body>
+</html>

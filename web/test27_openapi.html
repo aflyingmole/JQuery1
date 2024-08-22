@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test27_openapi.html</title>
+    <style>
+        #bookList div {
+            width: 850px;
+            height: 220px;
+            border: 3px solid #aaa;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            let start = 1;
+            $("#btn_search").click(function () {
+                $("#bookList").empty();
+                const search = $("#search").val();
+                start = 1;
+                $.ajax({
+                    url: 'server/naversearch.jsp',
+                    data: {"search": search, "start": start},
+                    success: function (data) {
+                        $(data).find("item").each(function () {
+                            const title = $(this).find("title").text();
+                            const discount = $(this).find("discount").text();
+                            const img = $(this).find("image").text();
+                            const str = "<div>" +
+                                "<h3>" + title + "</h3>" +
+                                "가격 : " + discount +
+                                "<img src='" + img + "' style='width: 100px'>" +
+                                "</div>"
+
+                            $("#bookList").append(str)
+
+                        });
+                    },
+
+                })
+            });
+                $("#btn_more").click(function () {
+                    const search = $("#search").val();
+                    start += 5;
+                    $.ajax({
+                        url: 'server/naversearch.jsp',
+                        data: {"search": search, "start": start},
+                        success: function (data) {
+                            $(data).find("item").each(function () {
+                                const title = $(this).find("title").text();
+                                const discount = $(this).find("discount").text();
+                                const img = $(this).find("image").text();
+                                const str = "<div>" +
+                                    "<h3>" + title + "</h3>" +
+                                    "가격 : " + discount +
+                                    "<img src='" + img + "' style='width: 100px'>" +
+                                    "</div>"
+                                $("#bookList").append(str)
+                            });
+                            let h = $(document).height();
+                            $(window).scrollTop(h);
+                        },
+
+                    })
+                });
+            $("#search").keyup(function (e) {
+                if (e.key === "Enter") {
+                    $("#btn_search").click();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="contents">
+    <h1>도서검색</h1>
+    검색어 <input type="text" id="search" value="자바">
+    <input type="button" value="찾기" id="btn_search">
+    <div id="bookList"></div>
+</div>
+<input type="button" value="더보기" id="btn_more">
+</body>
+</html>
